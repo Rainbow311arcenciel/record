@@ -10,10 +10,18 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
+
             $table->date('date');
-            $table->string('title');
+
+            // リレーション
+            $table->foreignId('title_id')
+                ->constrained()
+                ->onDelete('cascade');
+
             $table->integer('amount');
+
             $table->text('comment')->nullable();
+
             $table->timestamps();
         });
     }

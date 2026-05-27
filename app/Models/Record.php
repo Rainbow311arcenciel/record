@@ -8,8 +8,13 @@ class Record extends Model
 {
     protected $fillable = [
         'date',
-        'title',
+        'title_id',
         'amount',
         'comment'
     ];
+
+    public function title()
+    {
+        return $this->belongsTo(Title::class);
+    }
 }

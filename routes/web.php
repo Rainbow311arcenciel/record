@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecordController;
 use App\Http\Controllers\TitleController;
-
-Route::get('/records', [RecordController::class, 'index']);
+use App\Http\Controllers\RecordController;
 
 Route::get('/titles', [TitleController::class, 'index']);
+
+Route::get(
+    '/titles/{title}/records',
+    [RecordController::class, 'index']
+)->name('records.index');
