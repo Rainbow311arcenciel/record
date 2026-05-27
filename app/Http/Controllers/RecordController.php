@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Record;
+use App\Models\Title;
 
 class RecordController extends Controller
 {
-    public function index()
+    public function index(Title $title)
     {
-        $records = Record::all();
+        $records = $title->records;
 
-        return view('records.index', compact('records'));
+        return view('records.index', compact(
+            'title',
+            'records'
+        ));
     }
 }

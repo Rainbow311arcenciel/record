@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Title extends Model
 {
-    protected $fillable = [
-        'item_title'
-    ];
+    protected $fillable = ['name'];
+
+    public function records()
+    {
+        return $this->hasMany(Record::class);
+    }
 }

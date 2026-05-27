@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Title List</title>
-</head>
-<body>
-
 <h1>項目一覧</h1>
 
 <table border="1">
@@ -14,13 +7,14 @@
     </tr>
 
     @foreach($titles as $title)
-    <tr>
-        <td>{{ $title->id }}</td>
-        <td>{{ $title->item_title }}</td>
-    </tr>
+        <tr>
+            <td>{{ $title->id }}</td>
+
+            <td>
+                <a href="{{ route('records.index', $title->id) }}">
+                    {{ $title->name }}
+                </a>
+            </td>
+        </tr>
     @endforeach
-
 </table>
-
-</body>
-</html>
