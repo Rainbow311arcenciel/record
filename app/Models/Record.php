@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Record extends Model
 {
     protected $fillable = [
-        'date',
-        'title_id',
-        'amount',
-        'comment'
-    ];
+    'date',
+    'amount',
+    'comment',
+];
 
     public function title()
     {
