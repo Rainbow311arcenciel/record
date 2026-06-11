@@ -1,24 +1,20 @@
-<h1>{{ $title->name }}一覧</h1>
+<h1>{{ $title->name }}</h1>
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>金額</th>
-        <th>メモ</th>
-    </tr>
+<h2>レコード登録</h2>
 
-    @foreach($records as $record)
-        <tr>
-            <td>{{ $record->id }}</td>
-            <td>{{ $record->amount }}</td>
-            <td>{{ $record->memo }}</td>
-        </tr>
-    @endforeach
-</table>
-<h1>記録登録</h1>
-
-<form action="{{ route('records.store', $title) }}" method="POST">
+<form method="POST" action="{{ route('records.store') }}">
     @csrf
+
+    <div>
+        <label>項目</label>
+        <select name="title_id">
+            @foreach($titles as $title)
+                <option value="{{ $title->id }}">
+                    {{ $title->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
 
     <div>
         <label>日付</label>
@@ -35,7 +31,5 @@
         <textarea name="comment"></textarea>
     </div>
 
-    <button type="submit">
-        登録
-    </button>
+    <button type="submit">登録</button>
 </form>
