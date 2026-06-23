@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Record;
+use App\Models\Title;
+use Illuminate\Http\Request;
 
 class RecordController extends Controller
 {
+    public function index()
+    {
+        $titles = Title::all();
+
+        return view('records.index', compact('titles'));
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'title_id' => 'required|exists:titles,id',
-            'date' => 'required|date',
-            'amount' => 'required|integer',
-            'comment' => 'nullable|string',
-        ]);
-
         Record::create([
             'title_id' => $request->title_id,
-            'date' => $request->date,
-            'amount' => $request->amount,
-            'comment' => $request->comment,
+            'date'     => $request->date,
+            'amount'   => $request->amount,
+            'comment'  => $request->comment,
         ]);
 
-        return redirect('/titles');
+        return redirect()->route('records.index');
     }
 }

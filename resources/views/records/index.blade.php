@@ -1,6 +1,4 @@
-<h1>{{ $title->name }}</h1>
-
-<h2>レコード登録</h2>
+<h1>レコード登録</h1>
 
 <form method="POST" action="{{ route('records.store') }}">
     @csrf
@@ -8,9 +6,9 @@
     <div>
         <label>項目</label>
         <select name="title_id">
-            @foreach($titles as $title)
-                <option value="{{ $title->id }}">
-                    {{ $title->name }}
+            @foreach($titles as $item)
+                <option value="{{ $item->id }}">
+                    {{ $item->name }}
                 </option>
             @endforeach
         </select>
