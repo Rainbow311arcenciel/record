@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Title;
-use Illuminate\Http\Request;
 
 class RecordController extends Controller
 {
@@ -16,22 +15,22 @@ class RecordController extends Controller
             'records'
         ));
     }
+}
+public function create($title)
+{
+    return view('records.create', compact('title'));
+}
 
-    public function create(Title $title)
-    {
-        return view('records.create', compact('title'));
-    }
+public function store(Request $request, $title)
+{
+    $validated = $request->validate([
+        'date' => ['required', 'date'],
+        'amount' => ['required', 'integer'],
+        'comment' => ['nullable', 'string', 'max:255'],
+    ]);
 
-    public function store(Request $request, Title $title)
-    {
-        $validated = $request->validate([
-            'date' => ['required', 'date'],
-            'amount' => ['required', 'integer'],
-            'comment' => ['nullable', 'string', 'max:255'],
-        ]);
+    // 保存処理
+    // Record::create([...]);
 
-        // 保存処理
-
-        return redirect()->route('records.index', $title);
-    }
+    return redirect()->route('records.index', $title);
 }
