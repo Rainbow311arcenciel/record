@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use App\Models\Title;
-use Illuminate\Http\Request;
 
 class RecordController extends Controller
 {
@@ -15,15 +14,22 @@ class RecordController extends Controller
         return view('records.index', compact('titles'));
     }
 
-    public function store(Request $request)
+    public function create($title)
     {
-        Record::create([
-            'title_id' => $request->title_id,
-            'date'     => $request->date,
-            'amount'   => $request->amount,
-            'comment'  => $request->comment,
+        return view('records.create', compact('title'));
+    }
+
+    public function store(Request $request, $title)
+    {
+        $validated = $request->validate([
+            'date' => ['required', 'date'],
+            'amount' => ['required', 'integer'],
+            'comment' => ['nullable', 'string', 'max:255'],
         ]);
 
-        return redirect()->route('records.index');
+        // 保存処理
+        // Record::create([...]);
+
+        return redirect()->route('records.index', $title);
     }
 }
