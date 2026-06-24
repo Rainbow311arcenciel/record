@@ -6,7 +6,5 @@ use App\Http\Controllers\RecordController;
 
 Route::get('/titles', [TitleController::class, 'index']);
 
-Route::get(
-    '/titles/{title}/records',
-    [RecordController::class, 'index']
-)->name('records.index');
+Route::post('/records', [RecordController::class, 'store'])
+    ->name('records.store');
