@@ -1,4 +1,3 @@
-<h1>{{ $title->name }}</h1>
 
 <h2>レコード登録</h2>
 
@@ -8,11 +7,12 @@
     <div>
         <label>項目</label>
         <select name="title_id">
-            @foreach($titles as $title)
-                <option value="{{ $title->id }}">
-                    {{ $title->name }}
-                </option>
-            @endforeach
+    @foreach($titles as $title)
+        <option value="{{ $title->id }}"
+            {{ isset($selectedTitle) && $selectedTitle == $title->id ? 'selected' : '' }}>
+            {{ $title->name }}
+        </option>
+    @endforeach
         </select>
     </div>
 

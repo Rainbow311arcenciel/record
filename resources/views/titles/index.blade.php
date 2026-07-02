@@ -9,7 +9,11 @@
     @foreach($titles as $title)
         <tr>
             <td>{{ $title->id }}</td>
-            <td>{{ $title->name }}</td>
+            <td>
+                <a href="{{ route('titles.index', ['title_id' => $title->id]) }}">
+                    {{ $title->name }}
+                </a>
+            </td>
         </tr>
     @endforeach
 </table>
@@ -25,7 +29,8 @@
         <label>項目</label>
         <select name="title_id">
             @foreach($titles as $title)
-                <option value="{{ $title->id }}">
+                <option value="{{ $title->id }}"
+                    {{ isset($selectedTitle) && $selectedTitle == $title->id ? 'selected' : '' }}>
                     {{ $title->name }}
                 </option>
             @endforeach
