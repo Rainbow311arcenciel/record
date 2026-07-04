@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
+use App\Models\Title;
 
 class RecordController extends Controller
 {
+    public function index(Title $title)
+    {
+        $records = $title->records()->orderBy('date', 'desc')->get();
+        return view('records.index', compact('title', 'records'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -23,6 +30,6 @@ class RecordController extends Controller
             'comment' => $request->comment,
         ]);
 
-        return redirect('/titles');
+        return redirect()->route('records.index', $request->title_id);
     }
 }
