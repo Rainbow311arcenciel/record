@@ -9,7 +9,6 @@
     @foreach($titles as $title)
         <tr>
             <td>{{ $title->id }}</td>
-
             <td>
                 <a href="{{ route('records.index', $title->id) }}">
                     {{ $title->name }}

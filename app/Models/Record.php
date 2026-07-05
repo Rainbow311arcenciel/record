@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Title;
 
 class Record extends Model
 {
     protected $fillable = [
-        'date',
-        'title_id',
-        'amount',
-        'comment'
+    'title_id',
+    'date',
+    'amount',
+    'comment',
     ];
 
     public function title()
