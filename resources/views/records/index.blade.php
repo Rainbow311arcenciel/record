@@ -13,12 +13,14 @@
 
     <p>
         日付
-        <input type="date" name="date">
-    </p>
+<div>
+    <label for="date">日付</label>
+    <input type="date" name="date" id="date" required value="{{ date('Y-m-d') }}">
+</div>
 
     <p>
         金額
-        <input type="number" name="amount">
+        <input type="number" name="amount" required>
     </p>
 
     <p>
