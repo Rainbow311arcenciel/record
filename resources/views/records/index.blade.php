@@ -12,20 +12,24 @@
     <input type="hidden" name="title_id" value="{{ $title->id }}">
 
     <p>
-        日付
+        <label>日付</label>
 <div>
     <label for="date">日付</label>
-    <input type="date" name="date" id="date" required value="{{ date('Y-m-d') }}">
+    <input type="date" name="date" required value="{{ date('Y-m-d') }}">
 </div>
 
     <p>
-        金額
+        <label>金額</label>
+<div>
         <input type="number" name="amount" required>
+<div>
     </p>
 
     <p>
-        コメント
+        <label>コメント</label>
+<div>
         <input type="text" name="comment">
+<div>
     </p>
 
     <button type="submit">登録</button>
