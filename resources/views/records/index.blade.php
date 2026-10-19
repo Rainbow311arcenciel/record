@@ -4,6 +4,7 @@
 
 <hr>
 
+
 <h2>レコード登録</h2>
 
 <form action="{{ route('records.store') }}" method="POST">
@@ -12,24 +13,18 @@
     <input type="hidden" name="title_id" value="{{ $title->id }}">
 
     <p>
-        <label>日付</label>
-<div>
-    <label for="date">日付</label>
-    <input type="date" name="date" required value="{{ date('Y-m-d') }}">
-</div>
-
-    <p>
-        <label>金額</label>
-<div>
-        <input type="number" name="amount" required>
-<div>
+        <label for="date">日付</label><br>
+        <input type="date" id="date" name="date" required value="{{ date('Y-m-d') }}">
     </p>
 
     <p>
-        <label>コメント</label>
-<div>
-        <input type="text" name="comment">
-<div>
+        <label for="amount">金額</label><br>
+        <input type="number" id="amount" name="amount" required>
+    </p>
+
+    <p>
+        <label for="comment">コメント</label><br>
+        <input type="text" id="comment" name="comment">
     </p>
 
     <button type="submit">登録</button>
