@@ -4,6 +4,36 @@
 
 <hr>
 
+
+<h2>レコード登録</h2>
+
+<form action="{{ route('records.store') }}" method="POST">
+    @csrf
+
+    <input type="hidden" name="title_id" value="{{ $title->id }}">
+
+    <p>
+        <label for="date">日付</label><br>
+        <input type="date" id="date" name="date" required value="{{ date('Y-m-d') }}">
+    </p>
+
+    <p>
+        <label for="amount">金額</label><br>
+        <input type="number" id="amount" name="amount" required>
+    </p>
+
+    <p>
+        <label for="comment">コメント</label><br>
+        <textarea id="comment" name="comment"></textarea>
+    </p>
+
+    <button type="submit">登録</button>
+</form>
+
+<hr>
+
+<h2>レコード一覧</h2>
+
 <table border="1">
     <thead>
         <tr>
@@ -12,6 +42,7 @@
             <th>コメント</th>
         </tr>
     </thead>
+
     <tbody>
         @forelse($records as $record)
             <tr>
@@ -26,30 +57,3 @@
         @endforelse
     </tbody>
 </table>
-
-<hr>
-
-<h2>レコード登録</h2>
-
-<form method="POST" action="{{ route('records.store') }}">
-    @csrf
-
-    <input type="hidden" name="title_id" value="{{ $title->id }}">
-
-    <div>
-        <label>日付</label>
-        <input type="date" name="date" required value="{{ date('Y-m-d') }}">
-    </div>
-
-    <div>
-        <label>金額</label>
-        <input type="number" name="amount" required>
-    </div>
-
-    <div>
-        <label>コメント</label>
-        <textarea name="comment"></textarea>
-    </div>
-
-    <button type="submit">登録</button>
-</form>
