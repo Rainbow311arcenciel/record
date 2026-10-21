@@ -24,7 +24,7 @@
 
     <p>
         <label for="comment">コメント</label><br>
-        <input type="text" id="comment" name="comment">
+        <textarea id="comment" name="comment"></textarea>
     </p>
 
     <button type="submit">登録</button>
