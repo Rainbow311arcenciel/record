@@ -32,7 +32,7 @@
            font-size: 16px;
            padding: 6px 18px;
            border: none;
-           border-radius: 5px;">
+           border-cradius: 5px;">
         登録
     </button>
 </form>
