@@ -26,7 +26,15 @@
         <textarea id="comment" name="comment"></textarea>
     </p>
 
-    <button type="submit">登録</button>
+    <button type="submit"
+        style="background-color: skyblue;
+           color: black;
+           font-size: 16px;
+           padding: 6px 18px;
+           border: none;
+           border-radius: 5px;">
+        登録
+    </button>
 </form>
 
 <hr>
