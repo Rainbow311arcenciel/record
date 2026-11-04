@@ -10,7 +10,7 @@ class RecordController extends Controller
 {
     public function index(Request $request, Title $title)
     {
-    // 並び順を取得する（asc または desc）
+        // 並び順を取得する（asc または desc）
         $direction = $request->query('direction', 'desc');
 
         // asc と desc 以外の値は desc にする
@@ -20,9 +20,9 @@ class RecordController extends Controller
 
         // 日付順にレコードを取得する（同日の場合は id 順）
         $records = $title->records()
-        ->orderBy('date', $direction)
-        ->orderBy('id', $direction)
-        ->get();
+            ->orderBy('date', $direction)
+            ->orderBy('id', $direction)
+            ->get();
 
         return view('records.index', compact(
             'title',
