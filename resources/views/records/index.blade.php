@@ -4,7 +4,6 @@
 
 <hr>
 
-
 <h2>レコード登録</h2>
 
 <form action="{{ route('records.store') }}" method="POST">
@@ -27,7 +26,15 @@
         <textarea id="comment" name="comment"></textarea>
     </p>
 
-    <button type="submit">登録</button>
+    <button type="submit"
+        style="background-color: skyblue;
+           color: black;
+           font-size: 16px;
+           padding: 6px 18px;
+           border: none;
+           border-radius: 5px;">
+        登録
+    </button>
 </form>
 
 <hr>
@@ -37,7 +44,19 @@
 <table border="1">
     <thead>
         <tr>
-            <th>日付</th>
+            <th>
+                <a href="{{ route('records.index', [
+                    'title' => $title->id,
+                    'direction' => $direction === 'asc' ? 'desc' : 'asc'
+                ]) }}">
+                    日付
+                    @if ($direction === 'asc')
+                        ↑
+                    @else
+                        ↓
+                    @endif
+                </a>
+            </th>
             <th>金額</th>
             <th>コメント</th>
         </tr>
