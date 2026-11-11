@@ -57,7 +57,7 @@
                     @endif
                 </a>
             </th>
-            <th>金額</th>
+            <th style="text-align: right;">金額</th>
             <th>コメント</th>
         </tr>
     </thead>
@@ -66,7 +66,9 @@
         @forelse($records as $record)
             <tr>
                 <td>{{ $record->date }}</td>
-                <td>{{ number_format($record->amount) }} 円</td>
+                <td style="text-align: right;">
+    {{ number_format($record->amount) }} 円
+</td>
                 <td>{{ $record->comment }}</td>
             </tr>
         @empty
